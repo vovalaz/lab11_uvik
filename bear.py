@@ -38,27 +38,27 @@ age={self.age}, hibernation_period={self.hibernation_period})'
                    self.hibernation_period == sec_obj.hibernation_period)
 
     @singledispatch
-    def __add__(self, sec_obj: Bear) -> Bear:
+    def __add__(self, sec_obj: Bear) -> 'Bear':
         return Bear(self.weight + sec_obj.weight,
                     self.height,
                     self.age,
                     self.hibernation_period)
 
     @__add__.register
-    def _(self, sec_obj: float) -> Bear:
+    def _(self, sec_obj: float) -> 'Bear':
         return Bear(self.weight + sec_obj,
                     self.height,
                     self.age,
                     self.hibernation_period)
 
     @__add__.register
-    def _(self, sec_obj: int) -> Bear:
+    def _(self, sec_obj: int) -> 'Bear':
         return Bear(self.weight,
                     self.height,
                     self.age,
                     self.hibernation_period + sec_obj)
 
-    def __copy__(self) -> Bear:
+    def __copy__(self) -> 'Bear':
         newone = type(self)()
         newone.__dict__.update(self.__dict__)
         return newone
