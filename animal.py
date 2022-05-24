@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
-
+'''Abstract class representing animals'''
 @dataclass
 class Animal(ABC):
     weight: float
